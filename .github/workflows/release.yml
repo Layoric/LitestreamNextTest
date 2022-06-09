@@ -35,10 +35,10 @@ jobs:
       - name: Replace Prod API and CDN URLs
         env:
           deploy_api: ${{ secrets.DEPLOY_API }}
-          deploy_cdn: ${{ secrets.DEPLOY_CDN }}"
+          deploy_cdn: ${{ secrets.DEPLOY_CDN }}
         run: |
-          sed -i 's/$DEPLOY_API/${deploy_api}/g' ./ui/next.config.js
-          [[ -f ./ui/post.build.js ]] && sed -i 's/$DEPLOY_API/${deploy_api}/g;s/$DEPLOY_CDN/${deploy_cdn}/g' ./ui/post.build.js
+          sed -i 's/$DEPLOY_API/"$deploy_api"/g' ./ui/next.config.js
+          [[ -f ./ui/post.build.js ]] && sed -i 's/$DEPLOY_API/"$deploy_api"/g;s/$DEPLOY_CDN/"$deploy_cdn"/g' ./ui/post.build.js
           cat ./ui/next.config.js
 
       - name: Setup node
