@@ -36,7 +36,8 @@ jobs:
         env:
           deploy_api: ${{ secrets.DEPLOY_API }}
           deploy_cdn: ${{ secrets.DEPLOY_CDN }}
-        run: [ -x ./ci.prebuild.sh ] && chmod +x ./ci.prebuild.sh && ./ci.prebuild.sh
+        run: |
+          [ -x ./ci.prebuild.sh ] && chmod +x ./ci.prebuild.sh && ./ci.prebuild.sh
 
       - name: Setup node
         uses: actions/setup-node@v1
