@@ -37,10 +37,10 @@ jobs:
           deploy_api: ${{ secrets.DEPLOY_API }}
           deploy_cdn: ${{ secrets.DEPLOY_CDN }}
         run: |
-          if [ -e ci.prebuild.sh ]
+          if [ -e ./.deploy/ci.prebuild.sh ]
           then
-            chmod +x ./ci.prebuild.sh
-            ./ci.prebuild.sh
+            chmod +x ./.deploy/ci.prebuild.sh
+            ./.deploy/ci.prebuild.sh
           else
             echo "Skipping CI prebuild"
           fi
